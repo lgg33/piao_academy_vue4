@@ -40,6 +40,12 @@ export default {
     return request({
       url: url + 'getByName/' + name,
       method: 'get',
-    })
+    });
   },
+  getList() {
+    return request({
+      url: url,
+      method: 'get'
+    });
+  }
 }

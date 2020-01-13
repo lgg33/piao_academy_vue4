@@ -118,7 +118,7 @@
         }
       },
       saveOrUpdate() {
-        this.saveBtnDisabled = true
+        this.saveBtnDisabled = true;
         if (!this.teacher.id) {
           this.saveData()
         } else {
@@ -151,7 +151,7 @@
         this.$refs.teacherFormRef.validate(valid => {
           if (!valid) return;
           // console.log(this.teacher)
-          this.saveBtnDisabled = true
+          this.saveBtnDisabled = true;
           teacher.update(this.teacher).then(response => {
             return this.$message({
               type: 'success',
