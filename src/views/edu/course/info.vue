@@ -67,7 +67,7 @@
           :show-file-list="false"
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload"
-          :action="BASE_API+'/admin/file/upload?host=cover'"
+          :action="BASE_API+'/oss/file/upload?host=cover'"
           class="avatar-uploader">
           <img :src="courseInfo.cover" alt="..." style="width: 500px; height: 300px;">
         </el-upload>
@@ -113,7 +113,7 @@
         subjectFirstList: [],
         subjectSecondList: [],
         teacherList: [],
-        BASE_API: 'http://localhost:8102',
+        BASE_API: process.env.VUE_APP_BASE_API,
       }
     },
 

@@ -45,7 +45,7 @@
           :width="300"
           :height="300"
           :key="imagecropperKey"
-          :url="BASE_API+'/admin/file/upload'"
+          :url="BASE_API+'/oss/file/upload'"
           field="file"
           @close="close"
           @crop-upload-success="cropSuccess"/>
@@ -93,7 +93,7 @@
           avatarBak: ''
         },
         saveBtnDisabled: false, // 保存按钮是否禁用,
-        BASE_API: 'http://localhost:8102', // 接口API地址
+        BASE_API: process.env.VUE_APP_BASE_API, // 接口API地址
         imagecropperShow: false, // 是否显示上传组件
         imagecropperKey: 0 // 上传组件id
       }

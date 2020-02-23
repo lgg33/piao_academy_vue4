@@ -107,15 +107,21 @@
         </template>
       </el-table-column>
 
+      <el-table-column prop="status" label="课程状态" width="100" align="center" >
+        <template slot-scope="scope">
+          <el-tag :type="scope.row.status === 'Draft' ? 'primary' : 'success'">{{scope.row.status === 'Draft' ? '未发布' : '已发布'}}</el-tag>
+        </template>
+      </el-table-column>
+
       <el-table-column label="操作" width="150" align="center">
         <template slot-scope="scope">
           <router-link :to="'/edu/course/info/'+scope.row.id">
             <el-button type="text" size="mini" icon="el-icon-edit">编辑课程信息</el-button>
           </router-link>
-          <router-link :to="'/edu/course/chapter/'+scope.row.id">
+          <router-link :to="'/edu/course/summary/'+scope.row.id">
             <el-button type="text" size="mini" icon="el-icon-edit">编辑课程大纲</el-button>
           </router-link>
-          <el-button type="text" size="mini" icon="el-icon-delete">删除</el-button>
+          <el-button type="text" size="mini" icon="el-icon-delete" @click="deleteById(scope.row.id)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -202,6 +208,28 @@
         this.num = current;
         this.fetchData();
       },
+      async deleteById(id) {
+        // 弹框询问分类是否删除数据
+        const confirmResult = await this.$confirm(
+          '此操作将永久删除该分类, 是否继续?',
+          '提示',
+          {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }
+        ).catch(err => err);
+        // 如果分类确认删除，则返回值为字符串 confirm
+        // 如果分类取消了删除，则返回值为字符串 cancel
+        if (confirmResult !== 'confirm') {
+          return this.$message.info('已取消删除');
+        }
+        const result = await course.deleteById(id).catch(err => err);
+        if (result.success) {
+          this.$message.success("删除成功！");
+          this.fetchData();
+        }
+      }
     }
   }
 </script>

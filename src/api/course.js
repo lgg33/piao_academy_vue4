@@ -29,5 +29,23 @@ export default {
       method: 'post',
       data: course
     })
+  },
+  getPublishInfo(id) {
+    return request({
+      url: url + 'publish/' + id,
+      method: 'get'
+    })
+  },
+  publish(id) {
+    return request({
+      url: url + 'publish/' + id,
+      method: 'put'
+    })
+  },
+  deleteById(id) {
+    return request({
+      url: url + id,
+      method: 'delete'
+    })
   }
 }
