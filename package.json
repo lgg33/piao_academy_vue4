@@ -22,13 +22,13 @@
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-router": "^4.1.0",
     "@vue/cli-plugin-vuex": "^4.1.0",
-    "@vue/cli-service": "^4.1.0",
+    "@vue/cli-service": "^5.0.8",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "node-sass": "^4.13.0",
     "path-to-regexp": "^6.1.0",
     "sass-loader": "^8.0.0",
-    "svg-sprite-loader": "^4.1.6",
+    "svg-sprite-loader": "^6.0.11",
     "vue-template-compiler": "^2.6.10"
   }
 }
